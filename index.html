@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Grade Tracker</title>
+    <meta
+      name="description"
+      content="Modern dashboard for managing student grades and academic performance."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">SG</div>
+          <div>
+            <p class="eyebrow">CodeAlpha</p>
+            <h1>Student Grade Tracker</h1>
+          </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#" class="active">Dashboard</a>
+          <a href="#students-section">Students</a>
+          <a href="#grades-section">Grades</a>
+          <a href="#reports-section">Reports</a>
+        </nav>
+      </header>
+
+      <main class="dashboard">
+        <section class="stats-grid" aria-label="Grade overview">
+          <article class="stat-card accent-blue">
+            <div class="stat-header">
+              <span class="stat-label">Total Students</span>
+              <span class="stat-icon">👥</span>
+            </div>
+            <h2 id="totalStudentsCard">0</h2>
+          </article>
+
+          <article class="stat-card accent-purple">
+            <div class="stat-header">
+              <span class="stat-label">Average Grade</span>
+              <span class="stat-icon">📈</span>
+            </div>
+            <h2 id="averageGradeCard">0%</h2>
+          </article>
+
+          <article class="stat-card accent-green">
+            <div class="stat-header">
+              <span class="stat-label">Highest Grade</span>
+              <span class="stat-icon">🏆</span>
+            </div>
+            <h2 id="highestGradeCard">0%</h2>
+          </article>
+
+          <article class="stat-card accent-red">
+            <div class="stat-header">
+              <span class="stat-label">Lowest Grade</span>
+              <span class="stat-icon">📉</span>
+            </div>
+            <h2 id="lowestGradeCard">0%</h2>
+          </article>
+        </section>
+
+        <section class="toolbar panel" id="students-section">
+          <div class="toolbar-left">
+            <div>
+              <p class="section-kicker">Student Records</p>
+              <h3>Academic overview</h3>
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <label class="search-box" aria-label="Search students">
+              <span>🔎</span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search by name or ID"
+              />
+            </label>
+            <button id="addStudentBtn" class="primary-btn" type="button">
+              + Add Student
+            </button>
+          </div>
+        </section>
+
+        <section class="panel form-panel hidden" id="studentFormPanel">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Student Details</p>
+              <h3 id="formTitle">Add Student</h3>
+            </div>
+          </div>
+
+          <form id="studentForm" novalidate>
+            <div class="form-grid">
+              <label>
+                <span>Student ID</span>
+                <input id="studentId" name="studentId" type="text" required />
+              </label>
+
+              <label>
+                <span>Student Name</span>
+                <input id="studentName" name="studentName" type="text" required />
+              </label>
+
+              <label>
+                <span>Mathematics</span>
+                <input id="maths" name="maths" type="number" min="0" max="100" required />
+              </label>
+
+              <label>
+                <span>Science</span>
+                <input id="science" name="science" type="number" min="0" max="100" required />
+              </label>
+
+              <label>
+                <span>English</span>
+                <input id="english" name="english" type="number" min="0" max="100" required />
+              </label>
+
+              <label>
+                <span>History</span>
+                <input id="history" name="history" type="number" min="0" max="100" required />
+              </label>
+
+              <label class="full-width">
+                <span>Computer Science</span>
+                <input
+                  id="computerScience"
+                  name="computerScience"
+                  type="number"
+                  min="0"
+                  max="100"
+                  required
+                />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Save Student</button>
+              <button type="button" id="cancelBtn" class="secondary-btn">Cancel</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel table-panel" id="grades-section">
+          <div class="table-header">
+            <div>
+              <p class="section-kicker">Performance</p>
+              <h3>Student grade table</h3>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Student ID</th>
+                  <th>Subject</th>
+                  <th>Marks</th>
+                  <th>Grade</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="studentTableBody"></tbody>
+            </table>
+          </div>
+
+          <div id="emptyState" class="empty-state hidden">
+            <div class="empty-icon">📚</div>
+            <h4>No students added yet</h4>
+            <p>
+              Start by adding your first student to track marks, grades, and performance.
+            </p>
+            <button type="button" class="primary-btn" id="emptyAddBtn">Add First Student</button>
+          </div>
+        </section>
+
+        <section class="panel report-panel" id="reports-section">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Insights</p>
+              <h3>Performance summary</h3>
+            </div>
+          </div>
+
+          <div id="reportCards" class="report-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="viewModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header">
+          <div>
+            <p class="section-kicker">Student Report</p>
+            <h3 id="modalTitle">Student Details</h3>
+          </div>
+          <button type="button" class="icon-btn" id="closeModalBtn" aria-label="Close report">
+            ✕
+          </button>
+        </div>
+
+        <div id="studentReportContent" class="report-content"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
