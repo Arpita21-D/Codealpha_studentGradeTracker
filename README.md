@@ -60,3 +60,25 @@ StudentGradeTracker/
 ├── Student.java
 ├── GradeTracker.java
 └── README.md
+## 🖥️ Sample Output
+
+```text
+Menu:
+1. Add Student
+2. View All Students
+3. Search Student
+4. View Student Report
+5. Exit
+
+Select an option: 1
+
+Enter Student ID: S101
+Enter Student Name: Alice Johnson
+
+Enter mark for Mathematics (0-100): 90
+Enter mark for Science (0-100): 85
+Enter mark for English (0-100): 88
+Enter mark for History (0-100): 80
+Enter mark for Computer Science (0-100): 92
+
+Student added successfully!
