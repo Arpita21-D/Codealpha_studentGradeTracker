@@ -85,4 +85,4 @@ Student added successfully!
 - Upgrade the interface with GUI or web-based version
 
 ## Author
-CodeAlpha Internship Task 1
+Arpita Desai
