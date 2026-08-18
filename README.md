@@ -1,3 +1,12 @@
+
+## 🌐 Live Demo
+
+🚀 **[View Student Grade Tracker Live](https://arpita21-d.github.io/Codealpha_studentGradeTracker/)**
+
+> The project is deployed using GitHub Pages.
+
+
+
 # 🎓 Student Grade Tracker
 
 <p align="center">
